@@ -5,8 +5,10 @@ Purpose: The count variable will track the total number of Dog objects created.
 Implementation: You’ve already defined count as a static variable. This should be done at the class level, outside any methods or constructors.
 Error if Not Implemented: If the count variable is not static, each Dog instance would have its own separate count, leading to incorrect tracking of the total number of dogs.
 java
-Copy code
+
+''' java
 private static int count = 0;
+,,,
 2. Modify Constructors to Increment count
 
 Purpose: Both constructors need to increment count each time a Dog object is created.
