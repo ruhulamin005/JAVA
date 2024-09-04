@@ -121,3 +121,153 @@ public static void main(String[] args) {
 
 ### Conclusion:
 This solution ensures that all requirements of Task 3 are met. The static count variable accurately tracks the number of Dog objects, and the sequence number (seqNum) correctly reflects the order of creation. The static method printTotal provides a convenient way to display the total number of dogs bred. If any of these steps are skipped or implemented incorrectly, the program will fail to meet the task’s requirements, either by miscounting the number of dogs or by providing incomplete information about each dog.
+
+
+## Step-by-Step Guide to Solve Task 4
+1. Create the DogRegister Class
+
+Purpose: The DogRegister class will manage a collection of Dog objects.
+Implementation: Define the class and a private instance variable to hold the list of Dog objects.
+Error if Not Implemented: Without a proper class structure, you cannot manage the Dog objects effectively, leading to a disorganized and inefficient implementation.
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class DogRegister {
+    private List<Dog> dogRegister;
+
+    public DogRegister() {
+        dogRegister = new ArrayList<>();
+    }
+}
+```
+2. Implement addDog Method
+
+Purpose: Adds a Dog object to the dogRegister.
+Implementation: Create a method that accepts a Dog object and adds it to the list.
+Error if Not Implemented: If you don't have a method to add Dog objects to the register, you'll have no way to store them, rendering the register useless.
+
+```
+public void addDog(Dog dog) {
+    dogRegister.add(dog);
+}
+
+```
+
+3. Implement getDog Method
+
+Purpose: Retrieves a Dog object based on its registration number.
+Implementation: Iterate through the list to find the Dog with the matching regNum.
+Error if Not Implemented: Without this method, you won't be able to access specific Dog objects in the register, making it impossible to retrieve or manipulate them based on their registration numbers.
+
+
+```
+public Dog getDog(int regNum) {
+    for (Dog dog : dogRegister) {
+        if (dog.getRegNum() == regNum) {
+            return dog;
+        }
+    }
+    return null;
+}
+
+```
+4. Implement toString Method
+
+Purpose: Provides a string representation of the DogRegister.
+Implementation: Override the toString method to return details of all Dog objects in the register.
+Error if Not Implemented: Without a proper toString method, you won't be able to easily print or inspect the contents of the register, making debugging and verification difficult.
+```
+public String toString() {
+    StringBuilder sb = new StringBuilder();
+    for (Dog dog : dogRegister) {
+        sb.append(dog).append("\n");
+    }
+    return sb.toString();
+}
+```
+5. Implement getRegister Method
+
+Purpose: Returns the current list of Dog objects.
+Implementation: Create a method that returns the dogRegister list.
+Error if Not Implemented: Without this method, you won’t have direct access to the entire list, limiting the flexibility of what you can do with the register.
+```
+public List<Dog> getRegister() {
+    return dogRegister;
+}
+```
+6. Modify the main Method
+
+Purpose: Create a DogRegister object and add Dog objects to it. Test the methods by calling them and checking the output.
+Implementation: Add code to demonstrate the functionality of the DogRegister.
+Error if Not Implemented: Without testing in the main method, you won't be able to verify that the DogRegister class works as expected.
+```
+public static void main(String[] args) {
+    System.out.println("Starting dog application ");
+    
+    Dog.printTotal();
+
+    DogRegister dogRegister = new DogRegister();
+    
+    Dog myDog1 = new Dog();
+    Dog myDog2 = new Dog("Fluffy", "Poodle", 3496);
+
+    dogRegister.addDog(myDog1);
+    dogRegister.addDog(myDog2);
+
+    System.out.println(dogRegister);
+
+    System.out.println("Retrieve Dog with regNum 3496: " + dogRegister.getDog(3496));
+
+    Dog.printTotal();
+}
+```
+
+7. Implement deleteDog Method
+
+Purpose: Removes and returns a Dog object based on its registration number.
+Implementation: Search for the Dog in the list, remove it, and return the object. If not found, return null.
+Error if Not Implemented: Without this method, you won’t be able to manage the removal of Dog objects, which is crucial for keeping the register accurate and up-to-date.
+```java
+public Dog deleteDog(int regNum) {
+    for (Dog dog : dogRegister) {
+        if (dog.getRegNum() == regNum) {
+            dogRegister.remove(dog);
+            return dog;
+        }
+    }
+    return null;
+}
+
+```
+Testing in main Method:
+
+Add code to test the deleteDog method.
+```
+System.out.println("Deleting Dog with regNum 3496: " + dogRegister.deleteDog(3496));
+System.out.println(dogRegister);
+
+ ```
+8. Implement getDogsWhoseNameContains Method
+
+Purpose: Returns a collection of Dog objects whose names contain a specific character sequence.
+Implementation: Iterate through the list, check if the Dog's name contains the sequence, and add it to a result collection.
+Error if Not Implemented: Without this method, you won’t be able to filter Dog objects based on partial name matches, limiting the usefulness of the DogRegister.
+```java
+public Collection<Dog> getDogsWhoseNameContains(String charSequence) {
+    List<Dog> result = new ArrayList<>();
+    for (Dog dog : dogRegister) {
+        if (dog.getName().contains(charSequence)) {
+            result.add(dog);
+        }
+    }
+    return result;
+```
+Testing in main Method:
+
+Add code to test the getDogsWhoseNameContains method.
+```java
+System.out.println("Dogs whose names contain 'Fluff': " + dogRegister.getDogsWhoseNameContains("Fluff"));
+```
+### Conclusion:
+This solution ensures that all requirements of Task 4 are met. The DogRegister class is structured to manage a collection of Dog objects effectively. Each method is designed to handle specific tasks, such as adding, retrieving, deleting, and filtering dogs in the register. If any of these steps are skipped or implemented incorrectly, the program will fail to manage the Dog objects properly, leading to potential errors or incomplete functionality.
