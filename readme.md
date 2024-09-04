@@ -6,9 +6,12 @@ Implementation: You’ve already defined count as a static variable. This should
 Error if Not Implemented: If the count variable is not static, each Dog instance would have its own separate count, leading to incorrect tracking of the total number of dogs.
 java
 
-''' java
+
+```java
 private static int count = 0;
-,,,
+```
+
+
 2. Modify Constructors to Increment count
 
 Purpose: Both constructors need to increment count each time a Dog object is created.
